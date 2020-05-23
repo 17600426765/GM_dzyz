@@ -8,12 +8,19 @@
 # **********************************************************
 
 import sys
+from fabric import Connection
+#from fabric.api import run
 
 def view():
 	print("\t1.更新")
 	print("\tq.退出")
-	
 
+def update_dzyz():
+
+	c = Connection("root@192.168.65.170",connect_kwargs={"password":"123"})
+	with c.cd('/opt'):
+		c.run('ls')
+	
 
 #调用函数,并进行判断执行的选项
 while True:
@@ -22,6 +29,7 @@ while True:
 	go = input("请输入你要选择的选项:")
 	
 	if go == '1':
+		update_dzyz()
 		print("成功")
 	if go == 'q':
 		sys.exit(0)
